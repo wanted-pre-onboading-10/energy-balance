@@ -1,9 +1,7 @@
+import NavBar from "components/nav-bar/index";
+
 const App = () => {
-  return (
-    <main>
-      <p>에너지 밸런스 과제</p>
-    </main>
-  );
+  return <NavBar />;
 };
 
 export default App;
