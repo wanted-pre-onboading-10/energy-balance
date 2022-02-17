@@ -1,8 +1,13 @@
+import Home from 'pages/home';
+import Product from 'pages/product';
+import { Routes, Route } from 'react-router-dom';
+
 const App = () => {
   return (
-    <main>
-      <p>에너지 밸런스 과제</p>
-    </main>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='product' element={<Product />} />
+    </Routes>
   );
 };
 
