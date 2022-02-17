@@ -1,5 +1,12 @@
+import Result from "components/search-result/index";
+
 const Product = (): JSX.Element => {
-  return <div>product</div>;
+  return (
+    <div>
+      <Result />
+      product
+    </div>
+  );
 };
 
 export default Product;
