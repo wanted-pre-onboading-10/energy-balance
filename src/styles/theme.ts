@@ -4,7 +4,8 @@ const wrapSize = '1240px';
 
 const wrapper = css`
   margin: 0 auto;
-  width: ${wrapSize};
+  max-width: ${wrapSize};
+  width: 100%;
 `;
 
 const colors = {
