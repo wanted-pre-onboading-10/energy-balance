@@ -11,7 +11,7 @@ const NavBar = (): JSX.Element => {
         <S.StyledHomeLi to="/" path={CUR_PATH}>
           홈
         </S.StyledHomeLi>
-        <S.StyledSearchLi to="/product" path={CUR_PATH}>
+        <S.StyledSearchLi to="/search-results" path={CUR_PATH}>
           제품 목록
         </S.StyledSearchLi>
       </S.StyledUl>

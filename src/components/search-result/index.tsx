@@ -1,16 +1,16 @@
-import {useState } from "react";
+import { useState } from 'react';
 
-import useFilter from "utils/hooks/useFilter";
-import Posts from "components/search-result/posts/index";
-import Pagination from "components/search-result/pagination/index";
-import * as S from "components/search-result/styles";
+import useFilter from 'hooks/useFilter';
+import Posts from 'components/search-result/posts/index';
+import Pagination from 'components/search-result/pagination/index';
+import * as S from 'components/search-result/styles';
 
 const Result = (): JSX.Element => {
   const matchedItems = useFilter().getFilteredProducts();
-  const [posts] = useState<MatchedItemsType>(matchedItems);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
+  console.log(currentPage, 'currentPage');
   type MatchedItemsType = {
     name: string;
     brand: string;
@@ -24,14 +24,14 @@ const Result = (): JSX.Element => {
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = matchedItems.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <S.StyledSection>
       <S.StyledTabUl>
-        <S.StyledTabLi>제품명</S.StyledTabLi>
+        <S.StyledTabLi>검색 기록</S.StyledTabLi>
       </S.StyledTabUl>
       <S.StyledWrapper>
         <S.StyledNumP>
@@ -46,7 +46,7 @@ const Result = (): JSX.Element => {
       </S.StyledWrapper>
       <Pagination
         postsPerPage={postsPerPage}
-        totalPosts={posts.length}
+        totalPosts={matchedItems.length}
         paginate={paginate}
         currentPage={currentPage}
       />
