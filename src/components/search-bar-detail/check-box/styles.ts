@@ -20,7 +20,7 @@ export const StyledInput = styled.input`
 
   &:checked {
     background-color: ${props => props.theme.colors.primary};
-    border: 1px solid #000;
+    border: 1px solid ${props => props.theme.colors.black};
     border-radius: 50%;
     z-index: -1;
   }

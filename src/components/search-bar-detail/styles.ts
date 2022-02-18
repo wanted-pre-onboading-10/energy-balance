@@ -11,7 +11,7 @@ export const NormalSearchInput = styled.input`
   padding: 1.2rem 3.5rem 1.2rem 0.5rem;
   width: 100%;
   border: 0.1rem solid transparent;
-  border-bottom: 0.1rem solid #000;
+  border-bottom: 0.1rem solid ${props => props.theme.colors.black};
   outline: 0;
   font-size: 2rem;
   font-weight: 600;
@@ -42,7 +42,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1rem 0;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid ${props => props.theme.colors.black};
   cursor: pointer;
 `;
 
@@ -130,15 +130,15 @@ export const ButtonBox = styled.div`
 export const lightButton = styled.button`
   flex: 1;
   height: 5rem;
-  background-color: #fff;
-  color: #000;
-  border: 1px solid #000;
+  background-color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.black};
+  border: 1px solid ${props => props.theme.colors.black};
 `;
 
 export const DarkButton = styled.button`
   flex: 1;
   height: 5rem;
-  background-color: #000;
-  color: #fff;
-  border: 1px solid #000;
+  background-color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.white};
+  border: 1px solid ${props => props.theme.colors.black};
 `;
