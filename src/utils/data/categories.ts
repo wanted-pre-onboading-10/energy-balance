@@ -1,0 +1,26 @@
+const CATEGORIES = [
+  { id: 1, name: '비타민' },
+  { id: 2, name: '칼슘' },
+  { id: 3, name: '미네랄' },
+  { id: 4, name: '콜라겐' },
+  { id: 5, name: '아연' },
+  { id: 6, name: '오메가' },
+  { id: 7, name: '유산균' },
+  { id: 8, name: '홍삼' },
+  { id: 9, name: '마그네슘' },
+  { id: 10, name: '종합영양제' },
+  { id: 11, name: '혈당' },
+  { id: 12, name: '혈행' },
+  { id: 13, name: '배변' },
+  { id: 14, name: '면역' },
+  { id: 15, name: '다이어트' },
+  { id: 16, name: '식이섬유' },
+  { id: 17, name: '감기' },
+  { id: 18, name: '미백' },
+  { id: 19, name: '스트레스' },
+  { id: 20, name: '간' },
+  { id: 21, name: '눈' },
+  { id: 22, name: '관절' },
+];
+
+export default CATEGORIES;
