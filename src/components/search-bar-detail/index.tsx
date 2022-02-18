@@ -20,11 +20,6 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
     setProductName(e.currentTarget.value);
   };
 
-  const searchProduct = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    console.log('전송할 것', productName);
-  };
-
   const [category, setCategory] = useState<string[]>([]);
   const [country, setCountry] = useState('');
   const [volume, setVolume] = useState(-1);
@@ -37,7 +32,6 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
       const newArr = category.filter(eachCategory => eachCategory !== categoryName);
       setCategory(newArr);
     } else {
-      console.log(categoryName);
       setCategory(prev => [...prev, categoryName]);
     }
   };
@@ -65,6 +59,31 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
     setStarRating(0);
   };
 
+  const searchProduct = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    if (
+      category.length === 0 &&
+      country === '' &&
+      volume < 0 &&
+      brand === '' &&
+      starRating === 0 &&
+      price.minValue === 0 &&
+      price.maxValue === MAX_SAFE_INTEGER
+    ) {
+      console.log('전송 type: string', productName);
+    } else {
+      console.log('전송 type: object ', {
+        name: productName,
+        brand,
+        categories: category,
+        manufacture: country,
+        volume,
+        price,
+        rating: starRating,
+      });
+    }
+  };
+
   return (
     <>
       <S.NormalSearchContainer width={width}>
@@ -85,7 +104,7 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
           <ChevronDown />
         </S.Header>
         <S.Content>
-          <form autoComplete='off'>
+          <form autoComplete='off' onSubmit={searchProduct}>
             <FilterBar title='카테고리'>
               {CATEGORIES.map(eachCategory => {
                 return (
@@ -152,11 +171,13 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
                 /5 이상
               </S.FixedSeparator>
             </FilterBar>
+            <S.ButtonBox>
+              <S.lightButton type='button' onClick={setInitialize}>
+                초기화
+              </S.lightButton>
+              <S.DarkButton type='submit'>검색</S.DarkButton>
+            </S.ButtonBox>
           </form>
-          <S.ButtonBox>
-            <S.lightButton onClick={setInitialize}>초기화</S.lightButton>
-            <S.DarkButton>검색</S.DarkButton>
-          </S.ButtonBox>
         </S.Content>
       </S.Container>
     </>
