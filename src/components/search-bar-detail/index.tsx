@@ -4,6 +4,7 @@ import { ReactComponent as ChevronDown } from 'assets/icons/chevronDown.svg';
 import FilterBar from 'components/search-bar-detail/filter-bar';
 import CheckBox from 'components/search-bar-detail/check-box';
 
+import useFilter from 'hooks/useFilter';
 import * as S from 'components/search-bar-detail/styles';
 import COUNTRIES from 'utils/data/countries';
 import CATEGORIES from 'utils/data/categories';
@@ -15,12 +16,13 @@ interface SearchBarProps {
 }
 
 const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색' }: SearchBarProps) => {
+  const { setNewFilter } = useFilter();
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState<string[]>([]);
   const [country, setCountry] = useState('');
   const [volume, setVolume] = useState(-1);
   const [brand, setBrand] = useState('');
-  const [price, setPrice] = useState({ minValue: 0, maxValue: MAX_SAFE_INTEGER });
+  const [price, setPrice] = useState({ min: 0, max: MAX_SAFE_INTEGER });
   const [starRating, setStarRating] = useState(0);
 
   const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,24 +56,26 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
     setCategory([]);
     setCountry('');
     setVolume(-1);
-    setPrice({ minValue: 0, maxValue: MAX_SAFE_INTEGER });
+    setPrice({ min: 0, max: MAX_SAFE_INTEGER });
     setStarRating(0);
   };
 
   const searchProduct = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    if (!productName) alert('이름을 입력해주세요!');
+
     if (
       category.length === 0 &&
       country === '' &&
       volume < 0 &&
       brand === '' &&
       starRating === 0 &&
-      price.minValue === 0 &&
-      price.maxValue === MAX_SAFE_INTEGER
+      price.min === 0 &&
+      price.max === MAX_SAFE_INTEGER
     ) {
-      console.log('전송 type: string', productName);
+      setNewFilter(productName);
     } else {
-      console.log('전송 type: object ', {
+      setNewFilter({
         name: productName,
         brand,
         categories: category,
@@ -140,7 +144,7 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
                     <CheckBox
                       type='radio'
                       name='country'
-                      value={eachCountry.name}
+                      value={eachCountry.name || ''}
                       onChange={changeCountry}
                       key={eachCountry.id}
                       checked={country === eachCountry.name}
@@ -163,12 +167,12 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
                 })}
               </FilterBar>
               <FilterBar title='브랜드'>
-                <S.StyledInput name='brand' onChange={changeBrand} value={brand} />
+                <S.StyledInput name='brand' onChange={changeBrand} value={brand || ''} />
               </FilterBar>
               <FilterBar title='가격'>
-                <S.StyledInput name='minValue' onChange={changePrice} value={price.minValue} />
+                <S.StyledInput name='min' onChange={changePrice} value={price.min} />
                 <S.Separator>~</S.Separator>
-                <S.StyledInput name='maxValue' onChange={changePrice} value={price.maxValue} />
+                <S.StyledInput name='max' onChange={changePrice} value={price.max} />
               </FilterBar>
               <FilterBar title='별점'>
                 <S.StyledRangeInput
