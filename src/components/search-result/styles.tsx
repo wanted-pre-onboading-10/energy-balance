@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
-type TabType = { isClickedTab: number; idx: number };
-
 export const StyledSection = styled.section`
-  float: right;
+  width: 50%;
 `;
 export const StyledFormField = styled.div``;
 export const StyledFieldSet = styled.fieldset`
@@ -20,6 +18,7 @@ export const StyledInput = styled.input`
   font-size: 2rem;
   border: none;
   font-weight: 700;
+  width: 100%;
 `;
 export const StyledXButton = styled.button``;
 export const StyledXBtnImg = styled.img``;
@@ -32,16 +31,11 @@ export const StyledTabUl = styled.ul`
   border-bottom: 1px solid #bbb;
   display: flex;
 `;
-export const StyledTabLi = styled.button<TabType>`
+export const StyledTabLi = styled.button`
   padding-bottom: 1.2rem;
-  color : ${({ isClickedTab, idx }) =>
-    isClickedTab === idx ? "#000000" : "#bbbbbb"};
-  border-bottom : ${({ isClickedTab, idx }) =>
-    isClickedTab === idx ? "2px solid black" : "none"};
-  font-size: 2rem;
+  // 색깔 추가 예정
+  color: "#bbbbbb";
   line-height: 1.45;
   font-weight: 700;
-  &:nth-child(2){ {
-    margin-left: 4rem;
-  }
+  font-size: 2rem;
 `;

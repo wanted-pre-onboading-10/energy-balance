@@ -6,11 +6,9 @@ import ResultList from "components/search-result/result-list";
 const TABS = ["제품명", "브랜드명"];
 
 const Result = (): JSX.Element => {
-  const [isClickedTab, setIsClickedTab] = useState(0);
-
   return (
     <S.StyledSection>
-      <S.StyledFormField>
+      {/* <S.StyledFormField>
         <S.StyledFieldSet>
           <S.StyledLabel></S.StyledLabel>
           <S.StyledInputWrapper>
@@ -26,23 +24,12 @@ const Result = (): JSX.Element => {
             </S.StyledXButton>
           </S.StyledInputWrapper>
         </S.StyledFieldSet>
-      </S.StyledFormField>
+      </S.StyledFormField> */}
       <S.StyledSearchListWrapper>
         <S.StyledTabUl>
-          {TABS.map((tab, idx) => (
-            <S.StyledTabLi
-              onClick={() => {
-                setIsClickedTab(idx);
-              }}
-              key={idx}
-              idx={idx}
-              isClickedTab={isClickedTab}
-            >
-              {tab}
-            </S.StyledTabLi>
-          ))}
+          <S.StyledTabLi>제품명</S.StyledTabLi>
         </S.StyledTabUl>
-        {/* <ResultList /> */}
+        <ResultList />
       </S.StyledSearchListWrapper>
     </S.StyledSection>
   );
