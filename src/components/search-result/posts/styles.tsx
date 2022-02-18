@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 // 색깔 추가 예정
 export const StyledDlWrapper = styled.dl`
   display: flex;
   width: 100%;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid ${props => props.theme.colors.gray800};
 `;
 export const StyledImgDt = styled.dt``;
 export const StyledImg = styled.img`
@@ -34,10 +34,9 @@ export const StyledAdditional = styled.div`
   margin-bottom: 0.8rem;
 `;
 export const StyledStarImg = styled.img``;
-// 색깔 추가 예정
 export const StyledStarP = styled.p`
   font-size: 1.6rem;
-  color: #bbbbbb;
+  color: ${props => props.theme.colors.gray500};
   margin-left: 0.2rem;
   line-height: 1.5;
 `;

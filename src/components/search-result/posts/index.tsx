@@ -1,5 +1,5 @@
-import starIcon from "assets/images/star.png";
-import * as S from "components/search-result/posts/styles";
+import starIcon from 'assets/images/star.png';
+import * as S from 'components/search-result/posts/styles';
 
 interface PostProps {
   item: {
@@ -12,9 +12,6 @@ interface PostProps {
   };
 }
 
-//테스트용 삭제예정
-
-// 브랜드가 아니라 manufacture한 상황
 const Post = (Props: PostProps): JSX.Element => {
   const { image, manufacture, volume, price, rating, name } = Props.item;
 

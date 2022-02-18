@@ -1,26 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import useFilter from 'hooks/useFilter';
 import Posts from 'components/search-result/posts/index';
 import Pagination from 'components/search-result/pagination/index';
 import * as S from 'components/search-result/styles';
 
-const Result = (): JSX.Element => {
-  const matchedItems = useFilter().getFilteredProducts();
+interface ResultProps {
+  matchedItems: MatchedItemsType[];
+}
+
+type MatchedItemsType = {
+  name: string;
+  brand: string;
+  categories: string[];
+  manufacture: string;
+  volume: number;
+  price: number;
+  rating: number;
+  image: string;
+};
+
+const Result = (Props: ResultProps): JSX.Element => {
+  const { matchedItems } = Props;
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
+  const curFilterName = useFilter().getFilterName();
 
-  console.log(currentPage, 'currentPage');
-  type MatchedItemsType = {
-    name: string;
-    brand: string;
-    categories: string[];
-    manufacture: string;
-    volume: number;
-    price: number;
-    rating: number;
-    image: string;
-  }[];
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [matchedItems]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -31,7 +39,12 @@ const Result = (): JSX.Element => {
   return (
     <S.StyledSection>
       <S.StyledTabUl>
-        <S.StyledTabLi>검색 기록</S.StyledTabLi>
+        <S.StyledTabLi>
+          <S.StyledNumP>
+            {curFilterName === '' ? '' : `"${curFilterName}"에 대한 `}검색
+            결과입니다.
+          </S.StyledNumP>
+        </S.StyledTabLi>
       </S.StyledTabUl>
       <S.StyledWrapper>
         <S.StyledNumP>

@@ -20,14 +20,11 @@ export const Pagination = ({
     return checkId === currentPage;
   };
 
-  //페이지 칸이 5개 미만일 때
   if (totalPosts <= 50) {
     for (let i = 1; i <= Math.ceil(totalPosts / 10); i++) {
       pageNumbers.push(i);
     }
-    //페이지 칸이 5개 이상일 때
   } else {
-    //-2,-1,0 처리
     if (currentPage < 3) {
       for (let i = 1; i <= 5; i++) {
         pageNumbers.push(i);
@@ -41,9 +38,7 @@ export const Pagination = ({
       }
     }
   }
-  console.log(totalPosts, 'totalPosts');
-  console.log(pageNumbers, 'pageNumbers');
-  console.log(lastPageNum, 'lastPageNum');
+
   return (
     <S.PageWrapperUl>
       <S.PagePrevli>
