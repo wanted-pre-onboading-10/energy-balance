@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 
 import useFilter from "utils/hooks/useFilter";
 import Posts from "components/search-result/posts/index";
@@ -7,7 +7,7 @@ import * as S from "components/search-result/styles";
 
 const Result = (): JSX.Element => {
   const matchedItems = useFilter().getFilteredProducts();
-  const [posts, setPosts] = useState<MatchedItemsType>(matchedItems);
+  const [posts] = useState<MatchedItemsType>(matchedItems);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
@@ -25,8 +25,6 @@ const Result = (): JSX.Element => {
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  console.log(currentPosts, "currentPosts");
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 

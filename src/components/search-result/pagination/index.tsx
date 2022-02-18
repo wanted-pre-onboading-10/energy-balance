@@ -20,7 +20,7 @@ export const Pagination = ({
     return checkId === currentPage;
   };
   //돌려줘야할 페이지는 항상5칸 + 첫번째칸 + 마지막칸 + 화살표
-  //코드 합치고 중복코드가 많아 리팩토링 해야 할듯
+  //11시 이후 리팩토링 예정
   if (totalPosts <= 5) {
     for (let i = 1; i <= totalPosts; i++) {
       pageNumbers.push(i);

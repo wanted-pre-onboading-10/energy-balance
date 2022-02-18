@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+type PathType = {
+  path: string;
+};
 
 export const StyledHeader = styled.nav`
   position: fixed;
@@ -11,7 +15,7 @@ export const StyledHeader = styled.nav`
   justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.white};
 `;
-export const StyledLogo = styled.a`
+export const StyledLogo = styled(Link)`
   padding-top: 2.4rem;
 `;
 
@@ -22,17 +26,18 @@ export const StyledUl = styled.ul`
   display: flex;
   justify-content: space-between;
 `;
-export const StyledHomeLi = styled.a`
+export const StyledHomeLi = styled(Link)<PathType>`
+  border-bottom: ${({ path }) => {
+    return path === "/" ? "2px solid black" : "none";
+  }};
   padding: 3.2rem 0 1.6rem;
   line-height: 1.5;
   font-size: 1.6rem;
 `;
 
-// navLink를 styled-components에서 사용하는 것 연습
-export const StyledNavLink = styled(NavLink)`
-  background-color: pink;
-`;
-
-export const StyledSearchLi = styled(StyledHomeLi)`
+export const StyledSearchLi = styled(StyledHomeLi)<PathType>`
   margin-left: 5.8rem;
+  border-bottom: ${({ path }) => {
+    return path === "/product" ? "2px solid black" : "none";
+  }};
 `;
