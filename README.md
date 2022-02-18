@@ -80,7 +80,7 @@
   - 상단 navbar 구현
   - 검색 결과 페이지 표시
 - 회고
-  - 이번 프로젝트하면서 작성한 블로그 : [김태희 - 영양제 쇼핑몸ㄹ](https://fallacious-smash-138.notion.site/React-TS-82a6c7d5fd8b48a4914b1fc0d17e9e20)
+  - 이번 프로젝트하면서 작성한 블로그 : [김태희 - 영양제 쇼핑몰](https://fallacious-smash-138.notion.site/React-TS-82a6c7d5fd8b48a4914b1fc0d17e9e20)
 
 ### 문현돈
 - 역할
