@@ -46,13 +46,13 @@
 프로젝트 클론
 
 ```bash
-  git clone https://github.com/wanted-pre-onboading-10/ncnc-app.git
+  git clone https://github.com/wanted-pre-onboading-10/energy-balance.git
 ```
 
 프로젝트 디렉토리 들어가기
 
 ```bash
-  cd ncnc-app
+  cd energy-balance
 ```
 
 패키지 설치 및 프로젝트 시작
