@@ -1,6 +1,6 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
-const wrapSize = '1240px';
+const wrapSize = "1240px";
 
 const wrapper = css`
   margin: 0 auto;
@@ -8,17 +8,19 @@ const wrapper = css`
 `;
 
 const colors = {
-  primary: '#ff9270',
-  yellow: '#fefcf2',
-  blue: '#8fc4ff',
-  pink: '#f5788c',
-  gray300: '#e3e3e3',
-  gray500: '#bbbbbb',
+  primary: "#ff9270",
+  yellow: "#fefcf2",
+  blue: "#8fc4ff",
+  pink: "#f5788c",
+  gray300: "#e3e3e3",
+  gray500: "#bbbbbb",
+  white: "#ffffff",
+  black: "#000000",
 };
 
 const media = {
-  phone: 'only screen and (max-width: 768px)',
-  desktop: 'screen and (min-width: 769px)',
+  phone: "only screen and (max-width: 768px)",
+  desktop: "screen and (min-width: 769px)",
 };
 
 const theme = {
