@@ -15,7 +15,10 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
-const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색' }: SearchBarProps) => {
+const SearchBarDetail = ({
+  width = '90%',
+  placeholder = '영양제 이름 검색',
+}: SearchBarProps) => {
   const { setNewFilter } = useFilter();
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState<string[]>([]);
@@ -30,14 +33,19 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
   };
   const changeCategory = (categoryName: string) => {
     if (category.includes(categoryName)) {
-      const newArr = category.filter(eachCategory => eachCategory !== categoryName);
+      const newArr = category.filter(
+        eachCategory => eachCategory !== categoryName,
+      );
       setCategory(newArr);
     } else {
       setCategory(prev => [...prev, categoryName]);
     }
   };
   const changePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice({ ...price, [e.currentTarget.name]: +e.currentTarget.value.replace(/[^0-9]*$/, '') });
+    setPrice({
+      ...price,
+      [e.currentTarget.name]: +e.currentTarget.value.replace(/[^0-9]*$/, ''),
+    });
   };
   const changeCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCountry(e.currentTarget.value);
@@ -62,7 +70,6 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
 
   const searchProduct = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if (!productName) alert('이름을 입력해주세요!');
 
     if (
       category.length === 0 &&
@@ -110,7 +117,7 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
             onChange={changeName}
             value={productName || ''}
           />
-          <S.SubmitButton type='submit'>
+          <S.SubmitButton type="submit">
             <S.SearchOn />
           </S.SubmitButton>
         </form>
@@ -122,8 +129,8 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
         </S.Header>
         <S.ContentWrapper ref={containerRef}>
           <S.Content ref={contentRef}>
-            <form autoComplete='off' onSubmit={searchProduct}>
-              <FilterBar title='카테고리'>
+            <form autoComplete="off" onSubmit={searchProduct}>
+              <FilterBar title="카테고리">
                 {CATEGORIES.map(eachCategory => {
                   return (
                     <CheckBox
@@ -132,18 +139,18 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
                       onChange={() => {
                         changeCategory(eachCategory.name);
                       }}
-                      name='category'
+                      name="category"
                       checked={category.includes(eachCategory.name)}
                     />
                   );
                 })}
               </FilterBar>
-              <FilterBar title='제조국'>
+              <FilterBar title="제조국">
                 {COUNTRIES.map(eachCountry => {
                   return (
                     <CheckBox
-                      type='radio'
-                      name='country'
+                      type="radio"
+                      name="country"
                       value={eachCountry.name || ''}
                       onChange={changeCountry}
                       key={eachCountry.id}
@@ -152,12 +159,12 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
                   );
                 })}
               </FilterBar>
-              <FilterBar title='용량'>
+              <FilterBar title="용량">
                 {VOLUMES.map(eachVolume => {
                   return (
                     <CheckBox
-                      type='radio'
-                      name='volume'
+                      type="radio"
+                      name="volume"
                       value={eachVolume.value}
                       onChange={changeVolume}
                       key={eachVolume.id}
@@ -166,23 +173,35 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
                   );
                 })}
               </FilterBar>
-              <FilterBar title='브랜드'>
-                <S.StyledInput name='brand' onChange={changeBrand} value={brand || ''} />
+              <FilterBar title="브랜드">
+                <S.StyledInput
+                  name="brand"
+                  onChange={changeBrand}
+                  value={brand || ''}
+                />
               </FilterBar>
-              <FilterBar title='가격'>
-                <S.StyledInput name='min' onChange={changePrice} value={price.min} />
+              <FilterBar title="가격">
+                <S.StyledInput
+                  name="min"
+                  onChange={changePrice}
+                  value={price.min}
+                />
                 <S.Separator>~</S.Separator>
-                <S.StyledInput name='max' onChange={changePrice} value={price.max} />
+                <S.StyledInput
+                  name="max"
+                  onChange={changePrice}
+                  value={price.max}
+                />
               </FilterBar>
-              <FilterBar title='별점'>
+              <FilterBar title="별점">
                 <S.StyledRangeInput
-                  name='starRating'
+                  name="starRating"
                   value={starRating}
                   onChange={changeStarRating}
-                  type='range'
-                  min='0'
-                  max='5'
-                  step='0.5'
+                  type="range"
+                  min="0"
+                  max="5"
+                  step="0.5"
                 />
                 <S.FixedSeparator>
                   <S.StarRating>{starRating}</S.StarRating>
@@ -190,10 +209,10 @@ const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색
                 </S.FixedSeparator>
               </FilterBar>
               <S.ButtonBox>
-                <S.lightButton type='button' onClick={setInitialize}>
+                <S.lightButton type="button" onClick={setInitialize}>
                   초기화
                 </S.lightButton>
-                <S.DarkButton type='submit'>검색</S.DarkButton>
+                <S.DarkButton type="submit">검색</S.DarkButton>
               </S.ButtonBox>
             </form>
           </S.Content>
