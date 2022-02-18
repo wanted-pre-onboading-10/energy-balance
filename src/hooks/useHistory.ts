@@ -10,16 +10,21 @@ const useHistory = () => {
 
   return {
     getHistory() {
-      return useAppSelector((state) => state.history);
+      return useAppSelector(state => state.history);
     },
+
     clearHistory() {
       return dispatch(historyCleared());
     },
+
     deleteHistory(term: string) {
       return dispatch(historyDeleted(term.toLowerCase()));
     },
+
     createNewHistory(term: string) {
-      dispatch(historyAdded(term.toLowerCase()));
+      if (term) {
+        dispatch(historyAdded(term.toLowerCase()));
+      }
     },
   };
 };
