@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledSection = styled.section`
   width: 50%;
+  float: right;
 `;
 export const StyledTabUl = styled.ul`
   margin-bottom: 3.6rem;

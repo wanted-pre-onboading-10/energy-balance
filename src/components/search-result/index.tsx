@@ -50,6 +50,7 @@ const Result = (): JSX.Element => {
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
         paginate={paginate}
+        currentPage={currentPage}
       />
     </S.StyledSection>
   );
