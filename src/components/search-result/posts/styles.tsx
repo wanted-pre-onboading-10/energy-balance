@@ -7,8 +7,8 @@ export const StyledDlWrapper = styled.dl`
 `;
 export const StyledImgDt = styled.dt``;
 export const StyledImg = styled.img`
-  width: 12.8rem;
-  height: 12.8rem;
+  width: 10.8rem;
+  height: 10.8rem;
 `;
 export const StyledContentDd = styled.dd`
   font-size: 1.8rem;
@@ -31,13 +31,14 @@ export const StyledCntStrong = styled.strong``;
 export const StyledAdditional = styled.div`
   display: flex;
   padding-top: 1rem;
+  margin-bottom: 0.8rem;
 `;
 export const StyledStarImg = styled.img``;
 // 색깔 추가 예정
 export const StyledStarP = styled.p`
-  margin-bottom: 0.8rem;
   font-size: 1.6rem;
   color: #bbbbbb;
+  margin-left: 0.2rem;
   line-height: 1.5;
 `;
 export const StyledBtnDd = styled.dd`

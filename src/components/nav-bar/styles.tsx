@@ -17,6 +17,7 @@ export const StyledHeader = styled.nav`
   @media ${({ theme }) => theme.media.phone} {
     height: 6.4rem;
     border-bottom: none;
+    padding: 0 2rem;
   }
 `;
 export const StyledLogo = styled(Link)`

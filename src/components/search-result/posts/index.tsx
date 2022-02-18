@@ -1,3 +1,4 @@
+import starIcon from "assets/images/star.png";
 import * as S from "components/search-result/posts/styles";
 
 interface PostProps {
@@ -29,7 +30,7 @@ const Post = (Props: PostProps): JSX.Element => {
           <S.StyledCntP></S.StyledCntP>
         </S.StyledContent>
         <S.StyledAdditional>
-          <S.StyledStarImg></S.StyledStarImg>
+          <S.StyledStarImg src={starIcon}></S.StyledStarImg>
           <S.StyledStarP>{rating}</S.StyledStarP>
         </S.StyledAdditional>
       </S.StyledContentDd>
