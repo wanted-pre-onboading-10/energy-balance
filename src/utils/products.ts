@@ -1,4 +1,4 @@
-export const products = [
+export const PRODUCT_LIST = [
   {
     name: '6년근고려홍삼정스틱',
     brand: '',
