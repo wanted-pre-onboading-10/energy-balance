@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 type PathType = {
   path: string;
@@ -7,6 +7,7 @@ type PathType = {
 
 export const StyledHeader = styled.nav`
   position: fixed;
+  z-index: 1;
   border-bottom: 1px solid #000;
   height: 7.2rem;
   width: 100%;
@@ -32,7 +33,6 @@ export const StyledImg = styled.img`
   }
 `;
 
-//mediaquery 적용 시 없어질 예정
 export const StyledUl = styled.ul`
   display: flex;
   justify-content: space-between;
@@ -42,16 +42,21 @@ export const StyledUl = styled.ul`
 `;
 export const StyledHomeLi = styled(Link)<PathType>`
   border-bottom: ${({ path }) => {
-    return path === "/" ? "2px solid black" : "none";
+    console.log(path, 'path');
+    return path === '/' ? '2px solid black' : 'none';
   }};
   padding: 3.2rem 0 1.6rem;
   line-height: 1.5;
   font-size: 1.6rem;
 `;
 
-export const StyledSearchLi = styled(StyledHomeLi)<PathType>`
+export const StyledSearchLi = styled(Link)<PathType>`
   margin-left: 5.8rem;
+  padding: 3.2rem 0 1.6rem;
+  line-height: 1.5;
+  font-size: 1.6rem;
   border-bottom: ${({ path }) => {
-    return path === "/product" ? "2px solid black" : "none";
+    console.log(path, 'path');
+    return path === '/search-results' ? '2px solid black' : 'none';
   }};
 `;

@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import ItemHeart from "components/item-heart";
-import Modal from "components/modal";
+import ItemHeart from 'components/item-heart';
+import Modal from 'components/modal';
 
-import * as S from "pages/home/recommend-slide/styles";
-import { bone, stress } from "utils/mock/recommand";
-import { ProductInfo } from "types/product";
+import * as S from 'pages/home/recommend-slide/styles';
+import { bone, stress } from 'utils/mock/recommand';
+import { ProductInfo } from 'types/product';
 
 const RecommendSlide = (): JSX.Element => {
   const [modal, setModal] = useState(false);
   const [product, setProduct] = useState<ProductInfo>();
 
   const handleModal = () => {
-    setModal((m) => !m);
+    setModal(m => !m);
   };
 
   const itemClick = (value: ProductInfo) => {
