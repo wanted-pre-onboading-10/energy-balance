@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle, css } from "styled-components";
 
 // prettier로 createGlobalStyle은 포맷이 안 됨
 // styled-components의 css를 활용해 문제 해결
