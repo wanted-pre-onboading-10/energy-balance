@@ -4,7 +4,7 @@ import NavBar from "components/nav-bar";
 const Product = (): JSX.Element => {
   return (
     <div>
-      <NavBar />
+      <NavBar  />
       <Result />
       product
     </div>

@@ -1,6 +1,6 @@
-import * as S from "components/search-result/result-card/styles";
+import * as S from "components/search-result/posts/styles";
 
-interface ResultProps {
+interface PostProps {
   item: {
     name: string;
     manufacture: string;
@@ -14,7 +14,7 @@ interface ResultProps {
 //테스트용 삭제예정
 
 // 브랜드가 아니라 manufacture한 상황
-const ResultCard = (Props: ResultProps): JSX.Element => {
+const Post = (Props: PostProps): JSX.Element => {
   const { image, manufacture, volume, price, rating, name } = Props.item;
 
   return (
@@ -40,4 +40,4 @@ const ResultCard = (Props: ResultProps): JSX.Element => {
   );
 };
 
-export default ResultCard;
+export default Post;
