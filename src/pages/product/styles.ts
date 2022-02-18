@@ -13,6 +13,7 @@ export const Container = styled.main`
 
 export const HalfContainer = styled.section`
   display: flex;
+  flex: 1;
   max-width: calc(${props => props.theme.wrapSize} / 2);
   flex-direction: column;
   margin-top: 19.2rem;

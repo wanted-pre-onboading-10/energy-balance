@@ -46,6 +46,13 @@ export const Header = styled.div`
   cursor: pointer;
 `;
 
+export const ContentWrapper = styled.div`
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: height 500ms ease;
+`;
+
 export const Content = styled.div``;
 
 export const Separator = styled.div`
@@ -117,11 +124,12 @@ export const ButtonBox = styled.div`
   display: flex;
   flex: 1;
   margin-top: 3rem;
+  height: 5.2em;
 `;
 
 export const lightButton = styled.button`
   flex: 1;
-  height: 5.2rem;
+  height: 5rem;
   background-color: #fff;
   color: #000;
   border: 1px solid #000;
@@ -129,7 +137,7 @@ export const lightButton = styled.button`
 
 export const DarkButton = styled.button`
   flex: 1;
-  height: 5.2rem;
+  height: 5rem;
   background-color: #000;
   color: #fff;
   border: 1px solid #000;
