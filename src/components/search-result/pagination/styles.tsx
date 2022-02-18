@@ -7,6 +7,7 @@ type PageWrapperliType = {
 export const PageWrapperUl = styled.ul`
   margin-top: 4rem;
   display: flex;
+  justify-content: center;
 `;
 export const PagePrevli = styled.li`
   border-radius: 0.3rem 0 0 0.3rem;

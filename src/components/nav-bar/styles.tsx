@@ -14,17 +14,30 @@ export const StyledHeader = styled.nav`
   padding: 0 5.8rem;
   justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.white};
+  @media ${({ theme }) => theme.media.phone} {
+    height: 6.4rem;
+    border-bottom: none;
+  }
 `;
 export const StyledLogo = styled(Link)`
   padding-top: 2.4rem;
 `;
 
-export const StyledImg = styled.img``;
+export const StyledImg = styled.img`
+  @media ${({ theme }) => theme.media.phone} {
+    height: 2.4rem;
+    width: 8.6rem;
+    padding: 0;
+  }
+`;
 
 //mediaquery 적용 시 없어질 예정
 export const StyledUl = styled.ul`
   display: flex;
   justify-content: space-between;
+  @media ${({ theme }) => theme.media.phone} {
+    display: none;
+  }
 `;
 export const StyledHomeLi = styled(Link)<PathType>`
   border-bottom: ${({ path }) => {
