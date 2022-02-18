@@ -15,6 +15,8 @@ const colors = {
   pink: '#f5788c',
   gray300: '#e3e3e3',
   gray500: '#bbbbbb',
+  white: '#ffffff',
+  black: '#000000',
 };
 
 const media = {
