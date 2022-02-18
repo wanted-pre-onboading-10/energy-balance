@@ -1,7 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
+import historyReducer from 'redux/historySlice';
+import filterReducer from 'redux/filterSlice';
+
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    history: historyReducer,
+    filter: filterReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;

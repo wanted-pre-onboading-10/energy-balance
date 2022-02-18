@@ -1,6 +1,6 @@
 import { css } from "styled-components";
 
-const wrapSize = "1240px";
+const wrapSize = '1240px';
 
 const wrapper = css`
   margin: 0 auto;
@@ -17,9 +17,10 @@ const colors = {
   gray500: "#bbbbbb",
 };
 
+
 const media = {
-  phone: "only screen and (max-width: 768px)",
-  desktop: "screen and (min-width: 769px)",
+  phone: 'only screen and (max-width: 768px)',
+  desktop: 'screen and (min-width: 769px)',
 };
 
 const theme = {

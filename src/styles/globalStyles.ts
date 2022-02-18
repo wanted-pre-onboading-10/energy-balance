@@ -18,7 +18,7 @@ const styles = css`
   }
 
   body {
-    font-family: "Spoqa Han Sans Neo", "sans-serif";
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
   }
 
   a {
