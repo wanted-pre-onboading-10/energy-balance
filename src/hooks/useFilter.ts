@@ -10,9 +10,11 @@ const useFilter = () => {
   const { createNewHistory } = useHistory();
 
   return {
-    getFilter() {
-      return useAppSelector((state) => state.filter);
+    getFilterName() {
+      const filter = useAppSelector(state => state.filter);
+      return typeof filter === 'string' ? filter : filter.name;
     },
+
     setNewFilter(newFilter: FilterObj | string) {
       if (typeof newFilter === 'string') {
         createNewHistory(newFilter);
@@ -22,15 +24,16 @@ const useFilter = () => {
 
       dispatch(setFilter(newFilter));
     },
+
     getFilteredProducts() {
-      const filter = useAppSelector((state) => state.filter);
+      const filter = useAppSelector(state => state.filter);
 
       switch (typeof filter) {
         case 'object': {
-          return PRODUCT_LIST.filter((p) => detailedSearch(p, filter));
+          return PRODUCT_LIST.filter(p => detailedSearch(p, filter));
         }
         case 'string': {
-          return PRODUCT_LIST.filter((p) => basicSearch(p, filter));
+          return PRODUCT_LIST.filter(p => basicSearch(p, filter));
         }
         default:
           throw new Error(`A filter cannot be of type ${typeof filter}`);
