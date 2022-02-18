@@ -1,8 +1,39 @@
 import styled from 'styled-components';
 
-export const Container = styled.section`
+import { ReactComponent as SearchOnIcon } from 'assets/icons/searchOnIcon.svg';
+
+export const NormalSearchContainer = styled.div<{ width: string }>`
+  position: relative;
+  width: ${props => props.width};
+`;
+
+export const NormalSearchInput = styled.input`
+  padding: 1.2rem 3.5rem 1.2rem 0.5rem;
+  width: 100%;
+  border: 0.1rem solid transparent;
+  border-bottom: 0.1rem solid #000;
+  outline: 0;
+  font-size: 2rem;
+  font-weight: 600;
+
+  &::placeholder {
+    color: ${props => props.theme.colors.gray300};
+  }
+`;
+
+export const SubmitButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3rem;
+  height: 5rem;
+`;
+
+export const SearchOn = styled(SearchOnIcon)``;
+
+export const Container = styled.section<{ width: string }>`
   margin-top: 4rem;
-  width: 90%;
+  width: ${props => props.width};
   padding: 0 0.5rem;
   font-size: 1.5rem;
 `;
@@ -17,7 +48,7 @@ export const Header = styled.div`
 
 export const Content = styled.div``;
 
-export const Separator = styled.p`
+export const Separator = styled.div`
   margin: 0 3rem;
 `;
 
@@ -80,4 +111,26 @@ export const FixedSeparator = styled(Separator)`
 export const StarRating = styled.p`
   color: ${props => props.theme.colors.primary};
   width: 3rem;
+`;
+
+export const ButtonBox = styled.div`
+  display: flex;
+  flex: 1;
+  margin-top: 3rem;
+`;
+
+export const lightButton = styled.button`
+  flex: 1;
+  height: 5.2rem;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+`;
+
+export const DarkButton = styled.button`
+  flex: 1;
+  height: 5.2rem;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
 `;

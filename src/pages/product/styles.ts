@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.main`
   ${props => props.theme.wrapper}
   display: flex;
+  margin-bottom: 10rem;
 
   @media ${props => props.theme.media.phone} {
     flex-direction: column;

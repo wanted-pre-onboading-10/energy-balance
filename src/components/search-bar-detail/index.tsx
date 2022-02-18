@@ -1,108 +1,165 @@
 import React, { useState } from 'react';
 
 import { ReactComponent as ChevronDown } from 'assets/icons/chevronDown.svg';
-import FilterBar from './filter-bar';
+import FilterBar from 'components/search-bar-detail/filter-bar';
+import CheckBox from 'components/search-bar-detail/check-box';
 
 import * as S from 'components/search-bar-detail/styles';
-import CheckBox from './check-box';
+import COUNTRIES from 'utils/data/countries';
+import CATEGORIES from 'utils/data/categories';
+import VOLUMES from 'utils/data/volumes';
 
-const SearchBarDetail = () => {
-  const [brand, setBrand] = useState('');
+interface SearchBarProps {
+  width?: string;
+  placeholder?: string;
+}
+
+const SearchBarDetail = ({ width = '90%', placeholder = '영양제 이름 검색' }: SearchBarProps) => {
+  const [productName, setProductName] = useState('');
+  const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setProductName(e.currentTarget.value);
+  };
+
+  const searchProduct = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    console.log('전송할 것', productName);
+  };
+
   const [category, setCategory] = useState<string[]>([]);
   const [country, setCountry] = useState('');
   const [volume, setVolume] = useState(-1);
+  const [brand, setBrand] = useState('');
   const [price, setPrice] = useState({ minValue: 0, maxValue: MAX_SAFE_INTEGER });
   const [starRating, setStarRating] = useState(0);
 
-  const changeBrand = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setBrand(e.currentTarget.value);
-  };
-  const changeCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget);
-    // setCategory(prev => )
+  const changeCategory = (categoryName: string) => {
+    if (category.includes(categoryName)) {
+      const newArr = category.filter(eachCategory => eachCategory !== categoryName);
+      setCategory(newArr);
+    } else {
+      console.log(categoryName);
+      setCategory(prev => [...prev, categoryName]);
+    }
   };
   const changePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice({ ...price, [e.currentTarget.name]: e.currentTarget.value.replace(/[^0-9]*$/, '') });
+    setPrice({ ...price, [e.currentTarget.name]: +e.currentTarget.value.replace(/[^0-9]*$/, '') });
+  };
+  const changeCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCountry(e.currentTarget.value);
+  };
+  const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVolume(+e.currentTarget.value);
+  };
+  const changeBrand = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setBrand(e.currentTarget.value);
   };
   const changeStarRating = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStarRating(+e.currentTarget.value);
   };
+  const setInitialize = () => {
+    setBrand('');
+    setCategory([]);
+    setCountry('');
+    setVolume(-1);
+    setPrice({ minValue: 0, maxValue: MAX_SAFE_INTEGER });
+    setStarRating(0);
+  };
 
   return (
-    <S.Container>
-      <S.Header>
-        <p>상세 검색</p>
-        <ChevronDown />
-      </S.Header>
-      <S.Content>
-        <form>
-          <FilterBar title='카테고리'>
-            <CheckBox name='category' value='비타민' />
-            <CheckBox name='category' value='칼슘' />
-            <CheckBox name='category' value='미네랄' />
-            <CheckBox name='category' value='콜라겐' />
-            <CheckBox name='category' value='아연' />
-            <CheckBox name='category' value='오메가' />
-            <CheckBox name='category' value='유산균' />
-            <CheckBox name='category' value='홍삼' />
-            <CheckBox name='category' value='마그네슘' />
-            <CheckBox name='category' value='종합영양제' />
-            <CheckBox name='category' value='혈당' />
-            <CheckBox name='category' value='혈행' />
-            <CheckBox name='category' value='배변' />
-            <CheckBox name='category' value='면역' />
-            <CheckBox name='category' value='다이어트' />
-            <CheckBox name='category' value='식이섬유' />
-            <CheckBox name='category' value='감기' />
-            <CheckBox name='category' value='미백' />
-            <CheckBox name='category' value='스트레스' />
-            <CheckBox name='category' value='간' />
-            <CheckBox name='category' value='눈' />
-            <CheckBox name='category' value='관절' />
-          </FilterBar>
-          <FilterBar title='브랜드'>
-            <S.StyledInput name='brand' onChange={changeBrand} value={brand} />
-          </FilterBar>
-          <FilterBar title='제조국'>
-            <CheckBox type='radio' name='country' value='한국' />
-            <CheckBox type='radio' name='country' value='독일' />
-            <CheckBox type='radio' name='country' value='미국' />
-            <CheckBox type='radio' name='country' value='중국' />
-            <CheckBox type='radio' name='country' value='대만' />
-            <CheckBox type='radio' name='country' value='일본' />
-          </FilterBar>
-          <FilterBar title='용량'>
-            <CheckBox type='radio' name='volume' value={15} />
-            <CheckBox type='radio' name='volume' value={30} />
-            <CheckBox type='radio' name='volume' value={60} />
-            <CheckBox type='radio' name='volume' value={120} />
-            <CheckBox type='radio' name='volume' value={240} />
-          </FilterBar>
-          <FilterBar title='가격'>
-            <S.StyledInput name='minValue' onChange={changePrice} value={price.minValue} />
-            <S.Separator>~</S.Separator>
-            <S.StyledInput name='maxValue' onChange={changePrice} value={price.maxValue} />
-          </FilterBar>
-          <FilterBar title='별점'>
-            <S.StyledRangeInput
-              name='starRating'
-              value={starRating}
-              onChange={changeStarRating}
-              type='range'
-              min='0'
-              max='5'
-              step='0.5'
-            />
-            <S.FixedSeparator>
-              <S.StarRating>{starRating}</S.StarRating>
-              /5 이상
-            </S.FixedSeparator>
-          </FilterBar>
+    <>
+      <S.NormalSearchContainer width={width}>
+        <form onSubmit={searchProduct}>
+          <S.NormalSearchInput
+            placeholder={placeholder}
+            onChange={changeName}
+            value={productName || ''}
+          />
+          <S.SubmitButton type='submit'>
+            <S.SearchOn />
+          </S.SubmitButton>
         </form>
-        <button>초기화</button>
-        <button>검색</button>
-      </S.Content>
-    </S.Container>
+      </S.NormalSearchContainer>
+      <S.Container width={width}>
+        <S.Header>
+          <p>상세 검색</p>
+          <ChevronDown />
+        </S.Header>
+        <S.Content>
+          <form autoComplete='off'>
+            <FilterBar title='카테고리'>
+              {CATEGORIES.map(eachCategory => {
+                return (
+                  <CheckBox
+                    key={eachCategory.id}
+                    value={eachCategory.name}
+                    onChange={() => {
+                      changeCategory(eachCategory.name);
+                    }}
+                    name='category'
+                    checked={category.includes(eachCategory.name)}
+                  />
+                );
+              })}
+            </FilterBar>
+            <FilterBar title='제조국'>
+              {COUNTRIES.map(eachCountry => {
+                return (
+                  <CheckBox
+                    type='radio'
+                    name='country'
+                    value={eachCountry.name}
+                    onChange={changeCountry}
+                    key={eachCountry.id}
+                    checked={country === eachCountry.name}
+                  />
+                );
+              })}
+            </FilterBar>
+            <FilterBar title='용량'>
+              {VOLUMES.map(eachVolume => {
+                return (
+                  <CheckBox
+                    type='radio'
+                    name='volume'
+                    value={eachVolume.value}
+                    onChange={changeVolume}
+                    key={eachVolume.id}
+                    checked={volume === eachVolume.value}
+                  />
+                );
+              })}
+            </FilterBar>
+            <FilterBar title='브랜드'>
+              <S.StyledInput name='brand' onChange={changeBrand} value={brand} />
+            </FilterBar>
+            <FilterBar title='가격'>
+              <S.StyledInput name='minValue' onChange={changePrice} value={price.minValue} />
+              <S.Separator>~</S.Separator>
+              <S.StyledInput name='maxValue' onChange={changePrice} value={price.maxValue} />
+            </FilterBar>
+            <FilterBar title='별점'>
+              <S.StyledRangeInput
+                name='starRating'
+                value={starRating}
+                onChange={changeStarRating}
+                type='range'
+                min='0'
+                max='5'
+                step='0.5'
+              />
+              <S.FixedSeparator>
+                <S.StarRating>{starRating}</S.StarRating>
+                /5 이상
+              </S.FixedSeparator>
+            </FilterBar>
+          </form>
+          <S.ButtonBox>
+            <S.lightButton onClick={setInitialize}>초기화</S.lightButton>
+            <S.DarkButton>검색</S.DarkButton>
+          </S.ButtonBox>
+        </S.Content>
+      </S.Container>
+    </>
   );
 };
 

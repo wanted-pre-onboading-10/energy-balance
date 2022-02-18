@@ -18,9 +18,9 @@ const CATEGORIES = [
   { id: 17, name: '감기' },
   { id: 18, name: '미백' },
   { id: 19, name: '스트레스' },
-  { id: 19, name: '간' },
-  { id: 19, name: '눈' },
-  { id: 19, name: '관절' },
+  { id: 20, name: '간' },
+  { id: 21, name: '눈' },
+  { id: 22, name: '관절' },
 ];
 
 export default CATEGORIES;
