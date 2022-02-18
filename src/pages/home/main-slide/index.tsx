@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 
-import useHistory from "utils/hooks/useHistory";
+import useHistory from "hooks/useHistory";
 
 import * as S from "pages/home/main-slide/styles";
+import { useNavigate } from "react-router-dom";
+import useFilter from "hooks/useFilter";
 
 const MainSlide = (): JSX.Element => {
-  const history = useHistory();
+  const navigation = useNavigate();
+  const { getHistory, deleteHistory } = useHistory();
+  const { setNewFilter } = useFilter();
   const [inputFocus, setInputFocus] = useState<boolean>(false);
 
   const searchFocus = () => {
@@ -16,23 +20,23 @@ const MainSlide = (): JSX.Element => {
     setInputFocus(false);
   };
 
+  const pushResultPage = (str: string) => {
+    setNewFilter(str);
+    navigation("/search-results", { replace: true });
+  };
+
   const searchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    history.createNewHistory(e.currentTarget.search.value);
-
-    alert(e.currentTarget.search.value);
-    e.currentTarget.search.value = "";
+    pushResultPage(e.currentTarget.search.value);
   };
 
-  const deleteHistory = (e: React.MouseEvent<HTMLDivElement>) => {
-    history.deleteHistory(e.currentTarget.id);
+  const deleteSearchHistory = (e: React.MouseEvent<HTMLDivElement>) => {
+    deleteHistory(e.currentTarget.id);
   };
 
   const clickHistory = (e: React.MouseEvent<HTMLDivElement>) => {
-    history.createNewHistory(e.currentTarget.id);
-
-    alert(e.currentTarget.id);
+    pushResultPage(e.currentTarget.id);
   };
 
   return (
@@ -48,15 +52,15 @@ const MainSlide = (): JSX.Element => {
           <S.Submit />
         </S.InputBox>
         <S.HistoryBox focus={inputFocus}>
-          {history.getHistory().length === 0 && (
+          {getHistory().length === 0 && (
             <S.NoneHistory>최근 검색 내역이 없습니다.</S.NoneHistory>
           )}
-          {history.getHistory().map((v, idx) => (
+          {getHistory().map((v, idx) => (
             <S.History key={idx}>
               <S.HistoryText id={v} onClick={clickHistory}>
                 {v}
               </S.HistoryText>
-              <S.DeleteBtn id={v} onClick={deleteHistory}>
+              <S.DeleteBtn id={v} onClick={deleteSearchHistory}>
                 x
               </S.DeleteBtn>
             </S.History>
