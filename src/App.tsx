@@ -1,8 +1,17 @@
+import NavBar from "components/nav-bar";
+import Home from "pages/home";
+import Product from "pages/product";
+import { Routes, Route } from "react-router-dom";
+
 const App = () => {
   return (
-    <main>
-      <p>에너지 밸런스 과제</p>
-    </main>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search-results" element={<Product />} />
+      </Routes>
+    </>
   );
 };
 
