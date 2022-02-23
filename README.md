@@ -63,12 +63,11 @@
 
 <br/>
 
-## 📌 팀원
+## 📌 팀원
+|[이욱창](https://github.com/wook95)|[김태희](https://github.com/tae100k)|[문현돈](https://github.com/hyundonny)|[이경은](https://github.com/2kyung19)|
+| ----- | ---- | ----- |  ----- |
+|<img src="https://avatars.githubusercontent.com/u/80494742?v=4" width="200"/>|<img src="https://avatars.githubusercontent.com/u/78027252?v=4" width="200" />| <img src="https://avatars.githubusercontent.com/u/10048956?v=4" width="200" />|<img src="https://avatars.githubusercontent.com/u/32586712?v=4" width="200" />
 
-| 이욱창                                                                                                     | 김태희                                                                                                     | 문현돈                                                                                                     | 이경은                                                                                                     |
-| :--------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| ![](https://user-images.githubusercontent.com/78027252/153702187-d9d6a705-9b36-4bc7-a178-7a0657893b4d.png) | ![](https://user-images.githubusercontent.com/78027252/153702225-f9c8fb23-b7af-454d-9c97-4b7119a06214.png) | ![](https://user-images.githubusercontent.com/78027252/153702229-2c97a545-a682-4867-b78e-5028c7774201.png) | ![](https://user-images.githubusercontent.com/78027252/153702159-776cb78e-59ca-4c0a-bab5-742f5998d4e0.png) |
-| [@wook95](https://github.com/wook95)                                                                       | [@tae100k](https://github.com/tae100k)                                                                     | [@hyundonny](https://github.com/hyundonny)                                                                 | [@2kyung19](https://github.com/2kyung19)                                                                   |
 
 <br/>
 
